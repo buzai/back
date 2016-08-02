@@ -13,8 +13,20 @@
       "./mixins"
     ]
   },
+  "user": {
+  "dataSource": "mongodb",
+  "public": true,
+  "options": {
+  "emailVerificationRequired": false
+  }
+  },
+"org":{
+  "dataSource": "mongodb",
+  "public": true
+  },
   "User": {
-    "dataSource": "db"
+    "dataSource": "db",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "db",
