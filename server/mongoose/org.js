@@ -39,6 +39,10 @@ obj = {
   apiObject: apiObject
 };
 
-var org = model;
+var Org = model;
+
+
+//下面开始创建接口
+// Org
 
 }
