@@ -1,7 +1,6 @@
 var loopback = require('loopback');
 var mongoose = require('mongoose');
 
-
 module.exports = function (app, options) {
   console.log('start init db schema');
   var ds = app.datasources.mongodb;
@@ -19,10 +18,18 @@ module.exports = function (app, options) {
     console.log('mongoose connection is disconnected');
   });
 
+  var role = require("./role.js")(app, app.models.Role);
+  app.role = mongoose.model('role', role.schema);
+
+  var roleMapping = require("./roleMapping.js")(app, app.models.RoleMapping);
+  app.roleMapping = mongoose.model('roleMapping', roleMapping.schema);
+
   var org = require("./org.js")(app, app.models.org);
   app.org = mongoose.model('org', org.schema);
 
   var user = require("./user.js")(app, app.models.user);
   app.user = mongoose.model('user', user.schema);
-  
+
+
+
 };

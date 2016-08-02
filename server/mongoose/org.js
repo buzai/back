@@ -39,10 +39,55 @@ obj = {
   apiObject: apiObject
 };
 
-var Org = model;
+var OrgloopModel = model;
 
 
-//下面开始创建接口
-// Org
+// 开始创建接口
+// Org是 loopback的模型，用来暴露出接口
+
+/**
+ * 创建企业
+ * data :
+ *   {
+     "type": "Business",or"government"
+     "name": "jiangong",
+     "address": "beijing",
+     "verfyied": true,
+     "users": [
+       { "id":"57a0170f5bf90d9c14cec5e2" }
+     ]
+   }
+ * @param  {[type]}   data [description]
+ * @param  {Function} cb   [description]
+ * @return {[type]}   orgobject     [description]
+ */
+OrgloopModel.createOrg = function(data, cb) {
+
+  // data里面的名字在new 的时候也要一样否则存不进去
+  (new app.org(data))
+  .save(function (err, instance) {
+      if (err) {
+        cb(err);
+      }
+
+      app.roleMapping.findByPrincipalId(data.users[0].id, function (err, maps) {
+        app.role.findByName("orgCreat", function (err, role) {
+          console.log(role[0].id);
+          
+        });
+      });
+
+      cb(null, instance);
+  });
+
+};
+
+OrgloopModel.remoteMethod(
+  'createOrg', {
+    accepts: { arg: 'org', type: 'orgObj', http: { source:'body' } },
+    returns: { arg: 'org', type: 'orgObj', root: true },
+    http: {  path: '/createOrg', verb: 'post' }
+  }
+);
 
 }

@@ -14,13 +14,13 @@
     ]
   },
   "user": {
-  "dataSource": "mongodb",
-  "public": true,
-  "options": {
-  "emailVerificationRequired": false
-  }
+    "dataSource": "mongodb",
+    "public": true,
+    "options": {
+    "emailVerificationRequired": false
+    }
   },
-"org":{
+  "org":{
   "dataSource": "mongodb",
   "public": true
   },

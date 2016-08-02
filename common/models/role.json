@@ -1,13 +1,11 @@
 {
-  "name": "org",
-  "base": "Model",
+  "name": "role",
+  "base": "Role",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {
-
-  },
+  "properties": {},
   "validations": [],
   "relations": {
 
@@ -20,9 +18,8 @@
     },
     {
       "principalType": "ROLE",
-      "principalId": "generalUser",
-      "permission": "ALLOW",
-      "property":"createOrg"
+      "principalId": "Bob",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}
