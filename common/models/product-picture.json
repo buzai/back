@@ -1,0 +1,37 @@
+{
+  "name": "productPicture",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "product_id": {
+      "type": "number",
+      "required": true
+    },
+    "is_default": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "picture_url": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "product": {
+      "type": "belongsTo",
+      "model": "product",
+      "foreignKey": "id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

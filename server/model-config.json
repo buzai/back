@@ -43,5 +43,15 @@
   "Role": {
     "dataSource": "mongodb",
     "public": false
+  },
+  "product": {
+  "dataSource": "mongodb",
+  "public": true,
+  "$promise": {},
+  "$resolved": true
+  },
+  "productPicture": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }
