@@ -242,9 +242,9 @@ OrgloopModel.remoteMethod(
   }
 );
 
+
 // 减少企业用户的权限{"userId":"","position":""}，其实就是删除角色map传过来的数据确保是本企业的人员？
 OrgloopModel.reduceUserPermissions = function (data, cb) {
-var bson = require('bson')
   app.roleMapping
     .find({principalId:data.userId})
     .populate('roleId')
@@ -252,64 +252,26 @@ var bson = require('bson')
       if (err) {
         return cb(err);
       }
-      log(1)
-        
-      var a = _.mapKeys(maps[0].roleId, function(value, key) {
-          return key + value;
-        });
-      log(a["_doc[object Object]"]);
-
-      
       async.filter(maps, function(item,callback){
           var item = _.mapKeys(item.roleId, function(value, key) {
               return key + value;
             });
-          item = item["_doc[object Object]"]
-          if (item.roleId.name === data.position) {
-            log(13)
-            callback( item );
-          }
-      }, function(map) {
-          log(123);
-          log(map);
-          // log(map._id)
-          // app.roleMapping.remove({_id:map._id}, function (err) {
-          //   if(err) cb(err);
-          //   log(134)
-          //   cb(null, "---ok");
-          // })
+          callback( null,item["_doc[object Object]"].name === data.position );
+      }, function(err,Kmap) {
+
+          log(Kmap)
+
+          async.each(Kmap,function(item, callback) {
+            app.roleMapping.remove({_id:item._id}, function (err) {
+              if(err) cb(err);
+            })
+          }, function(err) {
+            if(err) cb(err);
+            cb(null,"ok")
+              log('1.2 err: ' + err);
+          });
       });
-
-
-
     });
-  // 找到所有的这个用户的map，然后找到需要删除的角色权限，怎么确定，找到那个role 获得id 然后和所有的map里面的roleid对比，对的上的话就删除这个map
-  // app.roleMapping.find({principalId:data.userId}, function (err, maps) {
-
-  //     if(err) cb(err);
-
-
-
-      // var roleId = app.roleObject[data.position].id;
-      // async.filter(maps, function(item,callback){
-      //     item = item.toString()
-      //     if (item.roleId === ObjectId(roleId)) {
-      //       log(13)
-      //       callback( item );
-      //     }
-      // }, function(map) {
-      //     log(map);
-      //     log(map._id)
-      //     app.roleMapping.remove({_id:map._id}, function (err) {
-      //       if(err) cb(err);
-      //       log(134)
-      //       cb(null, "---ok");
-      //     })
-      // });
-
-  // })
-
-
 }
 
 OrgloopModel.remoteMethod(
