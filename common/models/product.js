@@ -1,4 +1,37 @@
 module.exports = function(Product) {
+
+
+Product.createdProduct = function(data, cb) {
+	Product.create({name:data.name, userid:data.userid,orgid:data.orgid}, function (err, ins) {
+		console.log(ins);
+		cb(null,ins);
+	})
+};
+Product.remoteMethod(
+  'createdProduct', {
+    accepts: { arg: 'org', type: 'object', http: { source:'body' } },
+    returns: { arg: 'org', type: 'object', root: true },
+    http: {  path: '/createdProduct', verb: 'post' }
+  }
+);
+
+// {"userid":"57a07d6261ed14b03ee96217","orgid":"57a07dbc61ed14b03ee96219","name":"cest"}
+//   "__v": 0,
+//   "updatedAt": "2016-08-02T11:02:20.672Z",
+//   "createdAt": "2016-08-02T11:02:20.672Z",
+//   "type": "Business",
+//   "name": "jiangong",
+//   "address": "beijing",
+//   "_id": "57a07dbc61ed14b03ee96219",
+//   "users": [
+//     {
+//       "id": "57a07d6261ed14b03ee96217",
+//       "_id": "57a07dbc61ed14b03ee9621a"
+//     }
+//   ],
+//   "verfyied": true
+// }
+
 //-----------------------------------------------------------
 // 商品列表
 Product.listProduct = function(cb) {

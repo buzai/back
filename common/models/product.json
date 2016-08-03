@@ -16,7 +16,9 @@
     },
     "description": "string",
 
-    "created": "date"
+    "created": "date",
+    "userid": "string",
+    "orgid": "string"
   },
   "validations": [],
   "relations": {
@@ -31,6 +33,18 @@
       "foreignKey": "product_id"
     }
   },
-  "acls": [],
+    "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "orgProductsManageUser",
+      "permission": "ALLOW",
+      "property":"createdProduct"
+    }
+  ],
   "methods": {}
 }

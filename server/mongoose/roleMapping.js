@@ -15,11 +15,13 @@ function roleMapping(app, model) {
 function initModel(app, model) {
 
 // 生成schema
-var schemaDefinition = {};
+var schemaDefinition = {
+  roleId: { type: mongoose.Schema.Types.ObjectId, ref: 'role'}
+};
 
 var schema = new mongoose.Schema(schemaDefinition, { collection:'RoleMapping', timestamps: true});
 schema.statics.findByPrincipalId = function(Id, callback) {
-    return this.model('RoleMapping').find({principalId: Id}, callback);
+    return this.model('roleMapping').find({principalId: Id}, callback);
 };
 // 组装返回的对象
 obj = {

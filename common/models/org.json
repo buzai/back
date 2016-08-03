@@ -20,9 +20,39 @@
     },
     {
       "principalType": "ROLE",
-      "principalId": "generalUser",
+      "principalId": "$everyone",
       "permission": "ALLOW",
       "property":"createOrg"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"addOrgUser"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"deleteOrgUser"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"addUserPermissions"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"reduceUserPermissions"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"deleteOrg"
     }
   ],
   "methods": {}
