@@ -20,7 +20,18 @@
     "emailVerificationRequired": false
     }
   },
+  "JyUser": {
+    "dataSource": "mongodb",
+    "public": true,
+    "options": {
+    "emailVerificationRequired": false
+    }
+  },
   "org":{
+  "dataSource": "mongodb",
+  "public": true
+  },
+  "JyOrg":{
   "dataSource": "mongodb",
   "public": true
   },

@@ -27,9 +27,13 @@ module.exports = function (app, options) {
   var org = require("./org.js")(app, app.models.org);
   app.org = mongoose.model('org', org.schema);
 
+  var JyOrg = require("./JyOrg.js")(app, app.models.JyOrg);
+  app.JyOrg = mongoose.model('JyOrg', JyOrg.schema);
+
   var user = require("./user.js")(app, app.models.user);
   app.user = mongoose.model('user', user.schema);
 
-
+  var JyUser = require("./JyUser.js")(app, app.models.JyUser);
+  app.JyUser = mongoose.model('JyUser', JyUser.schema);
 
 };

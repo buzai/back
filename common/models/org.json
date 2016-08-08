@@ -53,6 +53,30 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property":"deleteOrg"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"getALLNotVerfyiedOrg"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"getALLVerfyiedOrg"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"confirmOrgVerfyiedWithId"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"getOrgUsersById"
     }
   ],
   "methods": {}

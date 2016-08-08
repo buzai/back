@@ -42,7 +42,7 @@ obj = {
   apiObject: apiObject
 };
 
-var OrgloopModel = model;
+var OrgloopMode = model;
 
 
 // 开始创建接口
@@ -61,10 +61,10 @@ var positionType = {
 }
 
 
-// app.roleObject in boot initrole.js
+//---app.OrgRoleObject in boot initrole.js
 function creaMappingWithUserIdAndPosition(userId, position, cb){
       var RoleMapping = app.models.RoleMapping;
-      var role = app.roleObject[position];
+      var role = app.OrgRoleObject[position];
       role.principals.create({
         principalType: RoleMapping.USER,
         principalId: userId
@@ -74,7 +74,7 @@ function creaMappingWithUserIdAndPosition(userId, position, cb){
       });
 }
 
-getUserOrgsWithUserId = function(userId, callback) {
+ function getUserOrgsWithUserId(userId, callback) {
     app.org.find({"users.id":userId }, callback);
 };  
 
@@ -113,7 +113,7 @@ function userIsInOrg(Id, orgId, fun) {
  * @param  {Function} cb   [description]
  * @return {[type]}   orgobject     [description]
  */
-OrgloopModel.createOrg = function(data, cb) {
+OrgloopMode.createOrg = function(data, cb) {
 
   // data里面的名字在new 的时候也要一样否则存不进去
   (new app.org(data))
@@ -128,7 +128,7 @@ OrgloopModel.createOrg = function(data, cb) {
   });
 };
 
-OrgloopModel.remoteMethod(
+OrgloopMode.remoteMethod(
   'createOrg', {
     accepts: { arg: 'org', type: 'orgObj', http: { source:'body' } },
     returns: { arg: 'org', type: 'orgObj', root: true },
@@ -138,7 +138,7 @@ OrgloopModel.remoteMethod(
 
 // 删除企业{"orgId":"57a0685a5ada84143d19bd98","userId":""}
 // {"email":"13165508732@qq.com","password":"password"}
-OrgloopModel.deleteOrg = function(data, cb) {
+OrgloopMode.deleteOrg = function(data, cb) {
   console.log(data)
   userIsInOrg(data.userId, data.orgId, function (err,result) {
     if(err) cb(err);
@@ -154,7 +154,7 @@ OrgloopModel.deleteOrg = function(data, cb) {
   })
 };
 
-OrgloopModel.remoteMethod(
+OrgloopMode.remoteMethod(
   'deleteOrg', {
     accepts: { arg: 'org', type: 'object', http: { source:'body' } },
     returns: { arg: 'org', type: 'object', root: true },
@@ -166,9 +166,9 @@ OrgloopModel.remoteMethod(
  * 增加企业用户
  * acl 为personMangeruser createOrguser
  * data userid orgid 职位信息(职位需要限制)
- * {"orgId":"57a061608d1bf6fc1e435c53","userId":"57a00f9f22f0ce581b8e9bad","57a061608d1bf6fc1e435c53":"orgProductsManageUser"}
+ * {"orgId":"57a066ae35ecc2d414c3081e","userId":"57a00f9f22f0ce581b8e9bad","position":"orgProductsManageUser"}
  */
-OrgloopModel.addOrgUser = function (data, cb) {
+OrgloopMode.addOrgUser = function (data, cb) {
     app.org.findByIdAndUpdate(
     data.orgId,
     {$push: { "users": { id:data.userId }} },
@@ -187,7 +187,7 @@ OrgloopModel.addOrgUser = function (data, cb) {
   );
 }
 
-OrgloopModel.remoteMethod(
+OrgloopMode.remoteMethod(
   'addOrgUser', {
     accepts: { arg: 'org', type: 'object', http: { source:'body' } },
     returns: { arg: 'org', type: 'orgObj', root: true },
@@ -196,7 +196,7 @@ OrgloopModel.remoteMethod(
 );
 
 // 删除企业用户{"orgId":"","deleteUserId":"","position":""}
-OrgloopModel.deleteOrgUser = function (data, cb) {
+OrgloopMode.deleteOrgUser = function (data, cb) {
 
     app.org.findByIdAndUpdate(
       data.orgId,
@@ -213,7 +213,7 @@ OrgloopModel.deleteOrgUser = function (data, cb) {
 
 }
 
-OrgloopModel.remoteMethod(
+OrgloopMode.remoteMethod(
   'deleteOrgUser', {
     accepts: { arg: 'org', type: 'object', http: { source:'body' } },
     returns: { arg: 'org', type: 'orgObj', root: true },
@@ -223,7 +223,7 @@ OrgloopModel.remoteMethod(
 
 
 // 增加企业用户的权限{"userId":"57a00fd422f0ce581b8e9baf","position":"orgNewsManageUser"}，传过来的数据确保是本企业的人员？
-OrgloopModel.addUserPermissions = function (data, cb) {
+OrgloopMode.addUserPermissions = function (data, cb) {
 
   creaMappingWithUserIdAndPosition(data.userId, data.position, function (err, result) {
     if(err) cb(err);
@@ -234,7 +234,7 @@ OrgloopModel.addUserPermissions = function (data, cb) {
 
 }
 
-OrgloopModel.remoteMethod(
+OrgloopMode.remoteMethod(
   'addUserPermissions', {
     accepts: { arg: 'org', type: 'object', http: { source:'body' } },
     returns: { arg: 'org', type: 'orgObj', root: true },
@@ -244,7 +244,7 @@ OrgloopModel.remoteMethod(
 
 
 // 减少企业用户的权限{"userId":"","position":""}，其实就是删除角色map传过来的数据确保是本企业的人员？
-OrgloopModel.reduceUserPermissions = function (data, cb) {
+OrgloopMode.reduceUserPermissions = function (data, cb) {
   app.roleMapping
     .find({principalId:data.userId})
     .populate('roleId')
@@ -274,11 +274,112 @@ OrgloopModel.reduceUserPermissions = function (data, cb) {
     });
 }
 
-OrgloopModel.remoteMethod(
+OrgloopMode.remoteMethod(
   'reduceUserPermissions', {
     accepts: { arg: 'org', type: 'object', http: { source:'body' } },
     returns: { arg: 'org', type: 'orgObj', root: true },
     http: {  path: '/reduceUserPermissions', verb: 'post' }
   }
 );
+
+//获取未审核过的企业
+OrgloopMode.getALLNotVerfyiedOrg = function (cb) {
+  app.org.find({verfyied:false}, function (err, result) {
+    if(err) cb(err);
+    cb(null, result);
+  })
+}
+OrgloopMode.remoteMethod(
+  'getALLNotVerfyiedOrg', {
+    returns: { arg: 'org', type: 'object', root: true },
+    http: {  path: '/getALLNotVerfyiedOrg', verb: 'get' }
+  }
+);
+//获取审核过的企业
+OrgloopMode.getALLVerfyiedOrg = function (cb) {
+  app.org.find({verfyied:true}, function (err, result) {
+    if(err) cb(err);
+    cb(null, result);
+  })
+}
+OrgloopMode.remoteMethod(
+  'getALLVerfyiedOrg', {
+    returns: { arg:'orgs', type: 'array' ,root: true},
+    http: {  path: '/getALLVerfyiedOrg', verb: 'get' }
+  }
+);
+//通过企业id认证
+OrgloopMode.confirmOrgVerfyiedWithId = function (orgId, cb) {
+  app.org.findByIdAndUpdate(
+    orgId,
+     { "verfyied": true },
+    {safe: true, upsert: true, new : true},
+    function(err, model) {
+      if (err) {
+        cb(err);
+      }
+      cb(null, model);
+    }
+  );
+}
+OrgloopMode.remoteMethod(
+  'confirmOrgVerfyiedWithId', {
+    accepts: { arg: 'orgId', type: 'string' },
+    returns: { arg: 'org', type: 'object', root: true },
+    http: {  path: '/confirmOrgVerfyiedWithId', verb: 'get' }
+  }
+);
+
+// 获取企业用户 通过企业id
+// 参数是org id ，并且将会显示里面所有用户的详细信息
+OrgloopMode.getOrgUsersById = function(id, cb) {
+  app.org
+    .findOne({_id:id})
+    .populate('users.id')
+    .exec(function (err, instance) {
+      if (err) {
+        return cb(err);
+      }
+      async.map(instance.users,function (item,kcb) {
+        getRolename(item.id._id.toString(), function (err, RoleName) {
+          var de = {};
+          de.name = RoleName;
+          de.user = item.id;
+          kcb(null, de);
+        })
+      },function (err,results) {
+        cb(null, results);
+      })
+    });
+  };
+
+  function getRolename(userId, cb) {
+  app.roleMapping
+    .find({principalId:userId})
+    .populate('roleId')
+    .exec(function (err, maps) {
+      if (err) {
+        return cb(err);
+      }
+      var item = _.mapKeys(maps[0].roleId, function(value, key) {
+          return key + value;
+        });
+      cb( null,item["_doc[object Object]"].name );
+      // cb(null,maps);
+    });
+  }
+  // /:id get 的时候url 展示是 xxx.baidu.com/chen
+  // 否则将是 xxx.baidu.com?id=chen
+OrgloopMode.remoteMethod(
+  'getOrgUsersById', {
+    accepts: { arg: 'id', type: 'string' },
+    returns: { arg: 'org', type: ['object'], root: true },
+    http: {  path: '/getOrgUsersById', verb: 'get' },
+  }
+  );
+
+
+
+
+
 }
