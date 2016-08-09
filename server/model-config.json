@@ -54,13 +54,5 @@
   "Role": {
     "dataSource": "mongodb",
     "public": false
-  },
-  "product": {
-  "dataSource": "mongodb",
-  "public": true
-  },
-  "productPicture": {
-    "dataSource": "mongodb",
-    "public": true
   }
 }
