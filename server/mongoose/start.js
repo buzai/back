@@ -35,5 +35,7 @@ module.exports = function (app, options) {
 
   var JyUser = require("./JyUser.js")(app, app.models.JyUser);
   app.JyUser = mongoose.model('JyUser', JyUser.schema);
-
+  
+  var product = require("./product.js")(app, app.models.product);
+  app.product = mongoose.model('product', product.schema);
 };
