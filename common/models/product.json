@@ -1,6 +1,6 @@
 {
   "name": "product",
-  "base": "PersistedModel",
+  "base": "Model",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -41,9 +41,15 @@
     },
     {
       "principalType": "ROLE",
-      "principalId": "orgProductsManageUser",
+      "principalId": "$everyone",
       "permission": "ALLOW",
       "property":"createdProduct"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"listProduct"
     }
   ],
   "methods": {}

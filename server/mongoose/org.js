@@ -308,6 +308,8 @@ OrgloopMode.remoteMethod(
     http: {  path: '/getALLVerfyiedOrg', verb: 'get' }
   }
 );
+
+
 //通过企业id认证
 OrgloopMode.confirmOrgVerfyiedWithId = function (orgId, cb) {
   app.org.findByIdAndUpdate(
@@ -378,8 +380,24 @@ OrgloopMode.remoteMethod(
   }
   );
 
-
-
+// {"k":"email","v":"13165508732@163.com"}
+//获取审核过的企业
+OrgloopMode.findUserByEmail = function (data,cb) {
+  // var k = data.k;
+  log(data.email)
+  app.user.find( { email : data.email } , function (err, result) {
+    if(err) cb(err);
+    console.log(result)
+    cb(null, result[0]);
+  })
+}
+OrgloopMode.remoteMethod(
+  'findUserByEmail', {
+    accepts: { arg: 'data', type: 'object', http: { source:'body' } },
+    returns: { arg:'user', type: 'object' ,root: true},
+    http: {  path: '/findUserByEmail', verb: 'post' }
+  }
+);
 
 
 }

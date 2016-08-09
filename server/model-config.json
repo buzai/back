@@ -57,9 +57,7 @@
   },
   "product": {
   "dataSource": "mongodb",
-  "public": true,
-  "$promise": {},
-  "$resolved": true
+  "public": true
   },
   "productPicture": {
     "dataSource": "mongodb",

@@ -35,7 +35,10 @@ Product.remoteMethod(
 //-----------------------------------------------------------
 // 商品列表
 Product.listProduct = function(cb) {
-    Product.find({}, cb);
+    Product.find({}, function (err, res) {
+			if(err) cb(err);
+			cb(null,res);
+		});
   };
 Product.remoteMethod('listProduct', {
     returns: {arg: 'product', type: 'array'},

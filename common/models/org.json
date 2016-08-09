@@ -77,6 +77,12 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property":"getOrgUsersById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"findUserByEmail"
     }
   ],
   "methods": {}
