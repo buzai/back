@@ -115,7 +115,7 @@ product.productByUserID = function(id,cb) {
 };
 product.remoteMethod('productByUserID', {
 	accepts: [{arg: 'id',type: 'string',required: true}],
-	returns: {arg: 'product', type: 'array'},
+	returns: {arg: 'product', type: 'array',root:true},
 	http: {path:'/productByUserID', verb: 'get'}
 });
 
@@ -130,7 +130,7 @@ product.productByPrice = function(mixPrice,maxPrice,cb) {
 };
 product.remoteMethod('productByPrice', {
 	accepts: [{arg: 'mixPrice',type: 'number',required: true},{arg: 'maxPrice', type: 'number',required: true}],
-	returns: {arg: 'instances', type: 'array'},
+	returns: {arg: 'instances', type: 'array',root:true},
 	http: {path:'/productByPrice', verb: 'get'}
 });
 //-----------------------------------------------------------
@@ -143,35 +143,35 @@ product.productByDate = function(mixDate,maxDate,cb) {
 };
 product.remoteMethod('productByDate', {
 	accepts: [{arg: 'mixDate',type: 'date',required: true},{arg: 'maxDate', type: 'date',required: true}],
-	returns: {arg: 'product', type: 'array'},
+	returns: {arg: 'product', type: 'array',root:true},
 	http: {path:'/productByDate', verb: 'get'}
 });
 //-----------------------------------------------------------
 //通过商品名称查询商品
-product.findByName = function(proName,cb) {
-	app.product.find({name: proName}, function(err,instances){
+product.productByName = function(proname,cb) {
+	app.product.find({name:proname},function(err,instances){
 		if(err) { cb(err); }
 		cb(null,instances);
 	});
 };
-product.remoteMethod('findByName', {
-	accepts: [{arg: 'proName',type: 'string',required: true}],
-	returns: {arg: 'product', type: 'array'},
-	http: {path:'/findByName', verb: 'get'}
+product.remoteMethod('productByName', {
+	accepts: [{arg: 'proname',type: 'string',required: true}],
+	returns: {arg: 'instances', type: 'array',root:true},
+	http: {path:'/productByName', verb: 'get'}
 });
 
 
 //-----------------------------------------------------------
 //通过商品名称模糊查询商品
 product.fuzzySearchByName = function(proName,cb) {
-	app.product.find({name: {like: proName}}, function(err,instances){
-		if(err) { cb(err); }
+	app.product.find({}).where('likes').in([proName]).exec( function(err,instances){
+		if(err) { return cb(err); }
 		cb(null,instances);
 	});
 };
 product.remoteMethod('fuzzySearchByName', {
 	accepts: [{arg: 'proName',type: 'string',required: true}],
-	returns: {arg: 'product', type: 'array'},
+	returns: {arg: 'product', type: 'array',root:true},
 	http: {path:'/fuzzySearchByName', verb: 'get'}
 });
 //-----------------------------------------------------------
@@ -186,7 +186,7 @@ product.productStatus = function(proID,cb) {
 };
 product.remoteMethod('productStatus', {
 	accepts: [{arg: 'proID',type: 'number',required: true}],
-	returns: {arg: 'results', type: 'boolean'},
+	returns: {arg: 'results', type: 'boolean',root:true},
 	http: {path:'/productStatus', verb: 'get'}
 });
 
