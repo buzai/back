@@ -5,27 +5,22 @@
   "options": {
     "validateUpsert": true
   },
-  "properties": {
-
-  },
+  "properties": {},
   "validations": [],
-  "relations": {
-
-  },
+  "relations": {},
   "acls": [
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"*"
+      "property": "*"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"getOrgsWithUserId"
+      "property": "getOrgsWithUserId"
     }
-
   ],
   "methods": {}
 }

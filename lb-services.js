@@ -3202,21 +3202,23 @@ module.factory(
          *
          *  - `id` – `{string}` - 
          *
-         * @param {function(Object,Object)=} successCb
+         * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
          *
          * @param {function(Object)=} errorCb Error callback with one argument:
          *   `httpResponse`.
          *
-         * @returns {Object} An empty reference that will be
+         * @returns {Array.<Object>} An empty reference that will be
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * Data properties:
-         *
-         *  - `product` – `{*=}` - 
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Product` object.)
+         * </em>
          */
         "productByUserID": {
+          isArray: true,
           url: urlBase + "/products/productByUserID",
           method: "GET"
         },
@@ -3238,21 +3240,23 @@ module.factory(
          *
          *  - `maxPrice` – `{number}` - 
          *
-         * @param {function(Object,Object)=} successCb
+         * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
          *
          * @param {function(Object)=} errorCb Error callback with one argument:
          *   `httpResponse`.
          *
-         * @returns {Object} An empty reference that will be
+         * @returns {Array.<Object>} An empty reference that will be
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * Data properties:
-         *
-         *  - `instances` – `{*=}` - 
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Product` object.)
+         * </em>
          */
         "productByPrice": {
+          isArray: true,
           url: urlBase + "/products/productByPrice",
           method: "GET"
         },
@@ -3274,28 +3278,30 @@ module.factory(
          *
          *  - `maxDate` – `{date}` - 
          *
-         * @param {function(Object,Object)=} successCb
+         * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
          *
          * @param {function(Object)=} errorCb Error callback with one argument:
          *   `httpResponse`.
          *
-         * @returns {Object} An empty reference that will be
+         * @returns {Array.<Object>} An empty reference that will be
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * Data properties:
-         *
-         *  - `product` – `{*=}` - 
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Product` object.)
+         * </em>
          */
         "productByDate": {
+          isArray: true,
           url: urlBase + "/products/productByDate",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Product#findByName
+         * @name lbServices.Product#productByName
          * @methodOf lbServices.Product
          *
          * @description
@@ -3306,24 +3312,26 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `proName` – `{string}` - 
+         *  - `proname` – `{string}` - 
          *
-         * @param {function(Object,Object)=} successCb
+         * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
          *
          * @param {function(Object)=} errorCb Error callback with one argument:
          *   `httpResponse`.
          *
-         * @returns {Object} An empty reference that will be
+         * @returns {Array.<Object>} An empty reference that will be
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * Data properties:
-         *
-         *  - `product` – `{*=}` - 
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Product` object.)
+         * </em>
          */
-        "findByName": {
-          url: urlBase + "/products/findByName",
+        "productByName": {
+          isArray: true,
+          url: urlBase + "/products/productByName",
           method: "GET"
         },
 
@@ -3342,21 +3350,23 @@ module.factory(
          *
          *  - `proName` – `{string}` - 
          *
-         * @param {function(Object,Object)=} successCb
+         * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
          *
          * @param {function(Object)=} errorCb Error callback with one argument:
          *   `httpResponse`.
          *
-         * @returns {Object} An empty reference that will be
+         * @returns {Array.<Object>} An empty reference that will be
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * Data properties:
-         *
-         *  - `product` – `{*=}` - 
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Product` object.)
+         * </em>
          */
         "fuzzySearchByName": {
+          isArray: true,
           url: urlBase + "/products/fuzzySearchByName",
           method: "GET"
         },
@@ -3374,7 +3384,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `proID` – `{number}` - 
+         *  - `proID` – `{string}` - 
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -3386,12 +3396,48 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * Data properties:
-         *
-         *  - `results` – `{boolean=}` - 
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Product` object.)
+         * </em>
          */
         "productStatus": {
           url: urlBase + "/products/productStatus",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Product#productByID
+         * @methodOf lbServices.Product
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `proID` – `{string}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Product` object.)
+         * </em>
+         */
+        "productByID": {
+          url: urlBase + "/products/productByID",
           method: "GET"
         },
       }
@@ -3409,6 +3455,243 @@ module.factory(
     * i.e. `Product`.
     */
     R.modelName = "Product";
+
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.ProductPicture
+ * @header lbServices.ProductPicture
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `ProductPicture` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "ProductPicture",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/productPictures/:id",
+      { 'id': '@id' },
+      {
+
+        /**
+         * @ngdoc method
+         * @name lbServices.ProductPicture#listPictures
+         * @methodOf lbServices.ProductPicture
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - 
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ProductPicture` object.)
+         * </em>
+         */
+        "listPictures": {
+          isArray: true,
+          url: urlBase + "/productPictures",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.ProductPicture#picture
+         * @methodOf lbServices.ProductPicture
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ProductPicture` object.)
+         * </em>
+         */
+        "picture": {
+          url: urlBase + "/productPictures",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.ProductPicture#listProducts
+         * @methodOf lbServices.ProductPicture
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ProductPicture` object.)
+         * </em>
+         */
+        "listProducts": {
+          isArray: true,
+          url: urlBase + "/productPictures/listPictures",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.ProductPicture#pictureByProductID
+         * @methodOf lbServices.ProductPicture
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{string}` - 
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ProductPicture` object.)
+         * </em>
+         */
+        "pictureByProductID": {
+          isArray: true,
+          url: urlBase + "/productPictures/pictureByProductID",
+          method: "GET"
+        },
+      }
+    );
+
+
+
+
+    /**
+    * @ngdoc property
+    * @name lbServices.ProductPicture#modelName
+    * @propertyOf lbServices.ProductPicture
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `ProductPicture`.
+    */
+    R.modelName = "ProductPicture";
+
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.Project
+ * @header lbServices.Project
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Project` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "Project",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/projects/:id",
+      { 'id': '@id' },
+      {
+      }
+    );
+
+
+
+
+    /**
+    * @ngdoc property
+    * @name lbServices.Project#modelName
+    * @propertyOf lbServices.Project
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `Project`.
+    */
+    R.modelName = "Project";
 
 
     return R;

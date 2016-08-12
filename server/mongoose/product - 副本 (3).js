@@ -19,12 +19,14 @@ function initModel(app,model){
 		orgID: {  type: Number, required: true},
     userID: {type: Number,required: true},
 		description: {  type: String },
+		create_time: {  type: Date, default: Date.now },
 	  model_number: {type: String},
+	  modify_time: {type: Date, default: Date.now,  required: true},
 		modify_admin_id: {  type: Number,required: true},
 		address: {type: String,default: "beijing",desc: "建材生产地址"},
 		product_type_id: {    type: Number,  required: true  },
 		is_alive: {  type: Boolean,  default: false  },
-	  is_pass: {    type: Boolean,default: false    },
+	  isPass: {    type: Boolean,default: false    },
 	  brand_id: {    type: Number  },
 		category_id: {type: Number  },
 	  visited: {  type: Number,default: 0  },
@@ -176,8 +178,7 @@ product.remoteMethod('fuzzySearchByName', {
 //-----------------------------------------------------------
 //审核商品 未完成
 product.productStatus = function(proID,cb) {
-
-	app.product.update({id:proID},{$set: { is_pass:true}}, function (err, results) {
+	app.product.update({id:proID},{isPass:true}, function (err, results) {
 		if(err){
 			cb(err,false);
 		}
@@ -185,35 +186,14 @@ product.productStatus = function(proID,cb) {
 });
 };
 product.remoteMethod('productStatus', {
-	accepts: [{arg: 'proID',type: 'string',required: true}],
+	accepts: [{arg: 'proID',type: 'number',required: true}],
 	returns: {arg: 'results', type: 'boolean',root:true},
 	http: {path:'/productStatus', verb: 'get'}
 });
-//-----------------------------------------------------------
-//通过商品ID查找商品
-product.productByID = function(proID,cb) {
-
-	app.product.find({_id:proID} ,function (err, results) {
-		if(err){
-			cb(err);
-		}
-		cb(null,results);
-});
-};
-product.remoteMethod('productByID', {
-	accepts: [{arg: 'proID',type: 'string',required: true}],
-	returns: {arg: 'results', type: 'productObj',root:true},
-	http: {path:'/productByID', verb: 'get'}
-});
 
 
 
 
 
-// var conditions = { name: 'borne' }
-//   , update = { $inc: { visits: 1 }}
-//   , options = { multi: true };
-//
-// Model.update(conditions, update, options, callback)
 
 };

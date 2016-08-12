@@ -5,13 +5,9 @@
   "options": {
     "validateUpsert": true
   },
-  "properties": {
-
-  },
+  "properties": {},
   "validations": [],
-  "relations": {
-
-  },
+  "relations": {},
   "acls": [
     {
       "principalType": "ROLE",
@@ -22,67 +18,67 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"createOrg"
+      "property": "createOrg"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"addOrgUser"
+      "property": "addOrgUser"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"deleteOrgUser"
+      "property": "deleteOrgUser"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"addUserPermissions"
+      "property": "addUserPermissions"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"reduceUserPermissions"
+      "property": "reduceUserPermissions"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"deleteOrg"
+      "property": "deleteOrg"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"getALLNotVerfyiedOrg"
+      "property": "getALLNotVerfyiedOrg"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"getALLVerfyiedOrg"
+      "property": "getALLVerfyiedOrg"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"confirmOrgVerfyiedWithId"
+      "property": "confirmOrgVerfyiedWithId"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"getOrgUsersById"
+      "property": "getOrgUsersById"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"findUserByEmail"
+      "property": "findUserByEmail"
     }
   ],
   "methods": {}
