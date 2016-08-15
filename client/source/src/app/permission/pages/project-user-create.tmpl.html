@@ -1,0 +1,28 @@
+<div class="md-padding">
+    <h2 class="md-display-1">Create User</h2>
+
+    <p>You can create a user.</p>
+    <h2>Create User</h2>
+    <md-input-container  class="md-block">
+        <md-icon md-font-icon="zmdi zmdi-account"></md-icon>
+        <input type="text" placeholder="Name" ng-model="vm.name">
+    </md-input-container>
+    <md-input-container class="md-block">
+        <md-icon md-font-icon="zmdi zmdi-phone"></md-icon>
+        <input type="text" placeholder="Phone Number" ng-model="vm.phone">
+    </md-input-container>
+    <md-input-container class="md-block">
+        <md-icon md-font-icon="zmdi zmdi-email"></md-icon>
+        <input type="email" placeholder="Email (required)" ng-required="true" ng-model="vm.email">
+    </md-input-container>
+    <md-input-container  class="md-block">
+        <md-icon md-font-icon="zmdi zmdi-pin"></md-icon>
+        <input type="text" placeholder="Address"  ng-model="vm.address">
+    </md-input-container>
+    <!--<md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>-->
+    <div layout="row" layout-align="end center">
+        <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userCreateClick()">Create</md-button>
+        <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userCancelClick()">Cancel</md-button>
+    </div>
+
+</div>

@@ -1,0 +1,75 @@
+<div class="md-padding">
+    <h2 class="md-display-1">Projects</h2>
+
+    <p>All of Projects you are able to manuplate.</p>
+
+    <div layout="row" layout-xs="column" layout-margin layout-align="space-between stretch">
+        <div class="md-whiteframe-1dp" flex layout="column">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <span translate>Owned projects</span>
+                </div>
+            </md-toolbar>
+            <md-table-container>
+                <table md-table class="md-primary md-data-table" md-row-select ng-model="vm.projectList">
+                    <thead md-head>
+                        <tr md-row>
+                            <th md-column md-numberic md-order-by="id"><span translate>Id</span></th>
+                            <th md-column><span translate>Name</span></th>
+                            <th md-column><span translate>Account belonged to</span></th>
+                        </tr>
+                    </thead>
+                    <tbody md-body>
+                        <tr md-row md-auto-select md-select="user" ng-repeat="project in vm.projectList">
+                            <td md-cell><a ui-sref="triangular.project-detail({id:project.id})">{{::project.id}}</a></td>
+                            <td md-cell>{{::project.name}}</td>
+                            <td md-cell><a ui-sref="triangular.accounts-detail({id:project.ownerId})">{{::project.accountName}}({{project.ownerId}})</a></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <md-subheader class="md-no-sticky">
+                    <md-button class="md-raised md-accent" aria-label="Create a project" ng-click="vm.userClick()">
+                        <md-icon md-font-icon="zmdi zmdi-plus-circle"></md-icon>
+                        Create a project
+                    </md-button>
+                </md-subheader>
+            </md-table-container>
+        </div>
+    </div>
+
+    <div layout="row" layout-xs="column" layout-margin layout-align="space-between stretch">
+        <div class="md-whiteframe-1dp" flex layout="column">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <span translate>Permissions</span>
+                </div>
+            </md-toolbar>
+            <md-table-container>
+                <table md-table class="md-primary md-data-table" md-row-select ng-model="vm.projectPermissions">
+                    <thead md-head>
+                        <tr md-row>
+                            <th md-column md-numberic md-order-by="id"><span translate>Id</span></th>
+                            <th md-column><span translate>Name</span></th>
+                            <th md-column><span translate>Permission</span></th>
+                        </tr>
+                    </thead>
+                    <tbody md-body>
+                        <tr md-row md-auto-select md-select="user" ng-repeat="project in vm.projectPermissions">
+                            <td md-cell>{{::project.id}}</td>
+                            <td md-cell>{{::project.name}}</td>
+                            <td md-cell>{{::project.permission}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <md-subheader class="md-no-sticky">
+                    <md-button class="md-raised md-accent" aria-label="Create a project" ng-click="">
+                        <md-icon md-font-icon="zmdi zmdi-plus-circle"></md-icon>
+                        Create a project
+                    </md-button>
+                </md-subheader>
+            </md-table-container>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,65 @@
+<!--用户管理-->
+<div class="md-padding">
+    <h2 class="md-display-1">用户管理</h2>
+
+    <p>All of users you are able to manuplate.</p>
+
+    <div layout="row" layout-xs="column" layout-margin layout-align="space-between stretch">
+        <md-table-container>
+            <div class="user">
+                <!--<md-input-container>
+                    <label>Username</label>
+                    <input type="text">
+                </md-input-container>-->
+                <md-input-container>
+                    <label>Email</label>
+                    <input type="text" ng-model="vm.kemail">
+                </md-input-container>
+                <!--<md-input-container class="md-block">
+                    <label>Phone</label>
+                    <input type="text">
+                </md-input-container>
+                <md-select placeholder="Types" ng-model="userType">
+                    <md-optgroup label="Administrator Types">
+                        <md-option value="Volvo">超级管理员</md-option>
+                        <md-option value="Saab">管理员</md-option>
+                    </md-optgroup>
+                    <md-optgroup label="Ordinary Types">
+                        <md-option value="Mercedes">企业用户</md-option>
+                        <md-option value="Audi">个人用户</md-option>
+                    </md-optgroup>
+                </md-select>-->
+            </div>
+
+            <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userClick()">查询</md-button>
+
+        </md-table-container>
+    </div>
+
+    <div class="md-whiteframe-1dp" flex layout="column">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span translate>User Table</span>
+            </div>
+        </md-toolbar>
+        <md-table-container>
+            <table md-table class="md-primary md-data-table" md-row-select ng-model="vm.userList">
+                <thead md-head>
+                    <tr md-row>
+                        <th md-column><span translate>人员id</span></th>
+                        <th md-column><span translate>人员类型名称</span></th>
+                        <th md-column><span translate>邮箱</span></th>
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row ng-repeat="user in vm.userList">
+                        <td md-cell>{{::user.user._id}}</td>
+                        <td md-cell>{{::user.name}}</td>
+                        <td md-cell>{{::user.user.email}}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+    </div>
+</div>
