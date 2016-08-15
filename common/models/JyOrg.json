@@ -5,13 +5,9 @@
   "options": {
     "validateUpsert": true
   },
-  "properties": {
-
-  },
+  "properties": {},
   "validations": [],
-  "relations": {
-
-  },
+  "relations": {},
   "acls": [
     {
       "principalType": "ROLE",
@@ -22,13 +18,13 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"getALLNotVerfyiedOrg"
+      "property": "getALLNotVerfyiedOrg"
     },
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"confirmOrgVerfyiedWithId"
+      "property": "confirmOrgVerfyiedWithId"
     }
   ],
   "methods": {}

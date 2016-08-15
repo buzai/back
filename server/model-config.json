@@ -17,23 +17,23 @@
     "dataSource": "mongodb",
     "public": true,
     "options": {
-    "emailVerificationRequired": false
+      "emailVerificationRequired": false
     }
   },
   "JyUser": {
     "dataSource": "mongodb",
     "public": true,
     "options": {
-    "emailVerificationRequired": false
+      "emailVerificationRequired": false
     }
   },
-  "org":{
-  "dataSource": "mongodb",
-  "public": true
+  "org": {
+    "dataSource": "mongodb",
+    "public": true
   },
-  "JyOrg":{
-  "dataSource": "mongodb",
-  "public": true
+  "JyOrg": {
+    "dataSource": "mongodb",
+    "public": true
   },
   "User": {
     "dataSource": "mongodb",
@@ -54,5 +54,9 @@
   "Role": {
     "dataSource": "mongodb",
     "public": false
+  },
+  "test": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

@@ -1,7 +1,5 @@
 {
-  "./mongoose/start":{
-
-  },
+  "./mongoose/start": {},
   "loopback-component-explorer": {
     "mountPath": "/explorer"
   }

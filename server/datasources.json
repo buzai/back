@@ -4,17 +4,17 @@
     "connector": "memory"
   },
   "mongodb": {
-  "host": "localhost",
-  "port": 27017,
-  "url": "mongodb://localhost:27017/back",
-  "database": "mongose-loop",
-  "password": "",
-  "name": "mongodb",
-  "user": "",
-  "connector": "mongodb"
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://localhost:27017/back",
+    "database": "mongose-loop",
+    "password": "",
+    "name": "mongodb",
+    "user": "",
+    "connector": "mongodb"
   },
-  "transient":{
-    "name":"transient",
-    "connector":"transient"
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
   }
 }
