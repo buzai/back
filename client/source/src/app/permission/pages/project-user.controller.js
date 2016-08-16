@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -6,37 +6,40 @@
         .controller('ProjectUserController', ProjectUserController);
 
     /* @ngInject */
-    function ProjectUserController($state, User, Org) {
-       
-        // var prjId = $stateParams.id;
-
-        // Project.findById({id:prjId}, function(resp){
-        //     vm.project = resp;
-        // });
-        
-        ////////////////
-        // function userClick(){
-        //     console.log("test");
-        // }
-        var vm=this;
-
+    function ProjectUserController($state, Org, User, $mdDialog, verifyDelete) {
 
         // init
-        var orgid = '57a066ae35ecc2d414c3081e';
-        Org.getOrgUsersById({id:orgid},function(res){
-            vm.userList = res;
+        var vm = this;
+        Org.getOrgUsersById({ 'id': '57b2b5e498c3dff50936e413' }, function (result) {
+            console.log(result)
+            vm.users = result;
         })
 
-        vm.userClick=userClick;
-        function userClick(){
-            Org.findUserByEmail({email:vm.kemail},
+        vm.showdata = true;
+        vm.userInquireClick = userInquireClick;
+        function userInquireClick() {
 
-                function(res){
-                    $state.go('triangular.project-user-inquire',{ obj:{ user:res, orgId:orgid } });
-                    // console.log(res);
-                }
-            )  
+            Org.findUserByEmail({ 'email': vm.userinput.email }, function (kuser) {
+                console.log(vm.userinput.email)
+                console.log(kuser)
+                $state.go('triangular.project-user-inquire', { obj: { user: kuser } });
+            })
+
         }
-        
+
+        vm.delete = function (user) {
+            verifyDelete(user).then(function () {
+                var index = vm.users.indexOf(user);
+                vm.users.splice(index, 1);
+            });
+        }
+
+        vm.userCreateClick = userCreateClick;
+        function userCreateClick() {
+            $state.go('triangular.project-user-create');
+        }
+
     }
 })();
+
+

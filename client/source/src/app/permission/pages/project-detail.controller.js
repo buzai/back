@@ -10,9 +10,9 @@
         var vm = this;
         var prjId = $stateParams.id;
 
-        // Project.findById({id:prjId}, function(resp){
-        //     vm.project = resp;
-        // });
+        Project.findById({id:prjId}, function(resp){
+            vm.project = resp;
+        });
         
         ////////////////
 

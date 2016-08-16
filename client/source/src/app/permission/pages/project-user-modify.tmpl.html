@@ -1,0 +1,96 @@
+<!--用户管理   修改-->
+<div class="md-padding">
+    <h2 class="md-display-1">用户管理-修改</h2>
+
+    <p>All of users you are able to manuplate.</p>
+
+    <div class="md-whiteframe-1dp" flex layout="column">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <span translate>User Table</span>
+                </div>
+            </md-toolbar>
+            <md-table-container>
+                <table md-table class="md-primary md-data-table" md-row-select ng-model="vm.projectList">
+                    <thead md-head>
+                        <tr md-row>
+                            <th md-column><span translate>ID</span></th>
+                            <th md-column><span translate>人员类型编码</span></th>
+                            <th md-column><span translate>人员类型名称</span></th>
+                            <th md-column><span translate>创建者</span></th>
+                            <th md-column><span translate>创建时间</span></th>
+                            <th md-column><span translate>修改者</span></th>
+                            <th md-column><span translate>修改时间</span></th>
+                            <th md-column><span translate>删除</span></th>
+                        </tr>
+                        <tr md-row ng-show="showdata">
+                            <th md-column><span translate>0011</span></th>
+                            <th md-column><span translate>0101</span></th>
+                            <th md-column><span translate>管理员</span></th>
+                            <th md-column><span translate>张晓明</span></th>
+                            <th md-column><span translate>20160306</span></th>
+                            <th md-column><span translate>欧阳商祺</span></th>
+                            <th md-column><span translate>20160508</span></th>
+                            <th md-column><span translate></span>
+                                <md-button class="md-fab md-primary" aria-label="delete">
+                                    <md-icon md-font-icon="zmdi zmdi-delete"></md-icon>
+                                    <md-tooltip>Delete</md-tooltip>
+                                </md-button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody md-body>
+                        <tr md-row md-auto-select md-select="user" ng-repeat="project in vm.projectList">
+                            <td md-cell><a ui-sref="triangular.project-detail({id:project.id})">{{::project.id}}</a></td>
+                            <td md-cell>{{::project.name}}</td>
+                            <td md-cell><a ui-sref="triangular.accounts-detail({id:project.ownerId})">{{::project.accountName}}({{project.ownerId}})</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+    </div>
+
+
+    <!-- <div layout="row" layout-xs="column" layout-margin layout-align="space-between stretch"> -->
+        <!-- <md-table>  -->
+              <div class="user">
+                  <md-input-container >
+                      <label>Username</label>
+                      <input type="text">
+                  </md-input-container>
+                  <md-input-container >
+                      <label>Gender</label>
+                      <input type="text">
+                  </md-input-container>
+                  <md-input-container >
+                      <label>Gender</label>
+                      <input type="text">
+                  </md-input-container>
+                  <md-input-container >
+                      <label>Gender</label>
+                      <input type="text">
+                  </md-input-container>
+                  <md-input-container >
+                      <label>Gender</label>
+                      <input type="text">
+                  </md-input-container>
+                  <md-input-container >
+                      <label>Gender</label>
+                      <input type="text">
+                  </md-input-container>
+                  <md-input-container >
+                      <label>Gender</label>
+                      <input type="text">
+                  </md-input-container>
+              </div>
+                  <div layout="row" layout-align="end center">
+                      <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userModifySaveClick()">Save</md-button>
+                      <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userModifyCancelClick()">Cancel</md-button>
+                  </div>
+        <!-- </md-table> -->
+   <!--  </div> -->
+
+    
+    
+</div>
+

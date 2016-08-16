@@ -51,17 +51,6 @@
                 }
             }
         })
-        .state('triangular.demo-views', {
-            url: '/permission/demo',
-            templateUrl: 'app/permission/pages/permission-demo-views.tmpl.html',
-            controller: 'demoController',
-            controllerAs: 'vm',
-            data: {
-                layout: {
-                    contentClass: 'layout-column'
-                }
-            }
-        })
         .state('triangular.accounts', {
             url: '/permission/accounts',
             templateUrl: 'app/permission/pages/account.tmpl.html',
@@ -108,13 +97,10 @@
         })
         <!--用户管理-->
         .state('triangular.project-user', {
-            url: '/permission/projects',
+            url: '/permission/projects-user',
             templateUrl: 'app/permission/pages/project-user.tmpl.html',
             controller: 'ProjectUserController',
             controllerAs: 'vm',
-            params: {
-                            obj: null // 这个地方就可以随便你用了. 因为这个参数没在state的url中体现出来
-                        },
             data: {
                 layout: {
                     contentClass: 'layout-column'
@@ -123,12 +109,12 @@
         })
         <!--用户管理  查询-->
         .state('triangular.project-user-inquire', {
-            url: '/permission/projects',
+            url: '/permission/projects-user-inquire',
             templateUrl: 'app/permission/pages/project-user-inquire.tmpl.html',
             controller: 'ProjectUserInquireController',
             controllerAs: 'vm',
-            params: {
-                obj: null // 这个地方就可以随便你用了. 因为这个参数没在state的url中体现出来
+            params:{
+                obj:null
             },
             data: {
                 layout: {
@@ -138,9 +124,33 @@
         })
         <!--用户管理  查询 新建-->
         .state('triangular.project-user-create', {
-            url: '/permission/projects',
+            url: '/permission/projects-user-create',
             templateUrl: 'app/permission/pages/project-user-create.tmpl.html',
             controller: 'ProjectUserCreateController',
+            controllerAs: 'vm',
+            data: {
+                layout: {
+                    contentClass: 'layout-column'
+                }
+            }
+        })
+        <!--用户管理  查询 修改-->
+        .state('triangular.project-user-modify', {
+            url: '/permission/projects-user-modify',
+            templateUrl: 'app/permission/pages/project-user-modify.tmpl.html',
+            controller: 'ProjectUserModifyController',
+            controllerAs: 'vm',
+            data: {
+                layout: {
+                    contentClass: 'layout-column'
+                }
+            }
+        })
+        <!--用户管理审核-->
+        .state('triangular.jianyi-user-Verified', {
+            url: '/jianyi/jianyi-user-Verified',
+            templateUrl: 'app/permission/pages/jianyi-user-Verified.tmpl.html',
+            controller: 'JianyiUserVerifiedController',
             controllerAs: 'vm',
             data: {
                 layout: {
@@ -178,6 +188,18 @@
             },{
                 name: 'Projects',
                 state: 'triangular.projects',
+                type: 'link'
+            }]
+        });
+
+        triMenuProvider.addMenu({
+            name: '建宜',
+            icon: 'zmdi zmdi-lock',
+            type: 'dropdown',
+            priority: 4.1,
+            children: [{
+                name: '用户审核',
+                state: 'triangular.jianyi-user-Verified',
                 type: 'link'
             }]
         });

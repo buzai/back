@@ -25,6 +25,9 @@ obj = {
 };
 
 var user = model;
+
+
+
 // 获取所在的企业
 user.getOrgsWithUserId = function(filter, cb) {
 

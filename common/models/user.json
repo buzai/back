@@ -19,7 +19,13 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property": "getOrgsWithUserId"
+      "property": "ensureUser"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findNotVerfiedUsers"
     }
   ],
   "methods": {}

@@ -383,11 +383,8 @@ OrgloopMode.remoteMethod(
 // {"k":"email","v":"13165508732@163.com"}
 //获取审核过的企业
 OrgloopMode.findUserByEmail = function (data,cb) {
-  // var k = data.k;
-  log(data.email)
   app.user.find( { email : data.email } , function (err, result) {
     if(err) cb(err);
-    console.log(result)
     cb(null, result[0]);
   })
 }

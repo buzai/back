@@ -5,37 +5,42 @@
     <p>All of users you are able to manuplate.</p>
 
     <div layout="row" layout-xs="column" layout-margin layout-align="space-between stretch">
-        <md-table-container>
+        <md-table>
             <div class="user">
-                <!--<md-input-container>
-                    <label>Username</label>
-                    <input type="text">
-                </md-input-container>-->
-                <md-input-container>
+                <!--<md-input-container >
+                      <label>ID</label>
+                      <input ng-model="vm.userinput.id" type="text">
+                  </md-input-container>
+                  <md-input-container >
+                      <label>职位</label>
+                      <input ng-model="vm.userinput.position" type="text">
+                  </md-input-container>-->
+                <md-input-container class="md-block">
                     <label>Email</label>
-                    <input type="text" ng-model="vm.kemail">
+                    <input ng-model="vm.userinput.email" type="text">
                 </md-input-container>
-                <!--<md-input-container class="md-block">
-                    <label>Phone</label>
-                    <input type="text">
-                </md-input-container>
-                <md-select placeholder="Types" ng-model="userType">
-                    <md-optgroup label="Administrator Types">
-                        <md-option value="Volvo">超级管理员</md-option>
-                        <md-option value="Saab">管理员</md-option>
-                    </md-optgroup>
-                    <md-optgroup label="Ordinary Types">
-                        <md-option value="Mercedes">企业用户</md-option>
-                        <md-option value="Audi">个人用户</md-option>
-                    </md-optgroup>
-                </md-select>-->
+                <!--<md-select placeholder="Types" ng-model="vm.userinput.type">
+                      <md-optgroup label="Administrator Types">
+                          <md-option value="Volvo">超级管理员</md-option>
+                          <md-option value="Saab">管理员</md-option>
+                      </md-optgroup>-->
+                <!--<md-optgroup label="Ordinary Types">
+                          <md-option value="Mercedes">企业用户</md-option>
+                          <md-option value="Audi">个人用户</md-option>
+                      </md-optgroup>-->
+                <!--</md-select>-->
             </div>
 
-            <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userClick()">查询</md-button>
-
-        </md-table-container>
+            <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userInquireClick()">查询
+            </md-button>
+            <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userCreateClick()">新建
+            </md-button>
+            <!-- <md-button class="md-primary md-raised" aria-label="add" ng-click="vm.userClick()">
+                      <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
+                      <md-tooltip>Create User</md-tooltip>
+                  </md-button> -->
+        </md-table>
     </div>
-
     <div class="md-whiteframe-1dp" flex layout="column">
         <md-toolbar>
             <div class="md-toolbar-tools">
@@ -43,20 +48,31 @@
             </div>
         </md-toolbar>
         <md-table-container>
-            <table md-table class="md-primary md-data-table" md-row-select ng-model="vm.userList">
+            <table md-table class="md-primary md-data-table" md-row-select>
                 <thead md-head>
                     <tr md-row>
-                        <th md-column><span translate>人员id</span></th>
-                        <th md-column><span translate>人员类型名称</span></th>
-                        <th md-column><span translate>邮箱</span></th>
+                        <th md-column><span translate>ID</span></th>
+                        <th md-column><span translate>姓名</span></th>
+                        <th md-column><span translate>职 位</span></th>
+                        <th md-column><span translate>Email</span></th>
+                        <th md-column><span translate>操 作</span></th>
                     </tr>
+
                 </thead>
                 <tbody md-body>
-                    <tr md-row ng-repeat="user in vm.userList">
-                        <td md-cell>{{::user.user._id}}</td>
-                        <td md-cell>{{::user.name}}</td>
-                        <td md-cell>{{::user.user.email}}</a>
-                        </td>
+                    <tr md-row ng-repeat="item in vm.users">
+                        <td md-cell>{{item.user._id}}</td>
+                        <td md-cell>{{item.user.user.username}}</td>
+                        <td md-cell>{{item.name}}</td>
+                        <td md-cell>{{item.user.email}}</td>
+
+
+                        <th md-column><span translate></span>
+                            <md-button class="md-fab md-primary" aria-label="delete" ng-click="vm.delete(item)">
+                                <md-icon md-font-icon="zmdi zmdi-delete"></md-icon>
+                                <md-tooltip>Delete</md-tooltip>
+                            </md-button>
+                        </th>
                     </tr>
                 </tbody>
             </table>

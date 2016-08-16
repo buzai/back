@@ -5,23 +5,28 @@
     <h2>Create User</h2>
     <md-input-container  class="md-block">
         <md-icon md-font-icon="zmdi zmdi-account"></md-icon>
-        <input type="text" placeholder="Name" ng-model="vm.name">
+        <input ng-model="vm.newuser.name" type="text" placeholder="Name">
     </md-input-container>
     <md-input-container class="md-block">
         <md-icon md-font-icon="zmdi zmdi-phone"></md-icon>
-        <input type="text" placeholder="Phone Number" ng-model="vm.phone">
+        <input ng-model="vm.newuser.phone" type="text" placeholder="Phone Number">
     </md-input-container>
     <md-input-container class="md-block">
         <md-icon md-font-icon="zmdi zmdi-email"></md-icon>
-        <input type="email" placeholder="Email (required)" ng-required="true" ng-model="vm.email">
+        <input ng-model="vm.newuser.email" type="email" placeholder="Email (required)" ng-required="true">
     </md-input-container>
     <md-input-container  class="md-block">
         <md-icon md-font-icon="zmdi zmdi-pin"></md-icon>
-        <input type="text" placeholder="Address"  ng-model="vm.address">
+        <input ng-model="vm.newuser.address" type="text" placeholder="Address">
     </md-input-container>
-    <!--<md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>-->
+    <md-input-container  class="md-block">
+        <md-icon md-font-icon="zmdi zmdi-pin"></md-icon>
+        <input ng-model="vm.newuser.password" type="text" placeholder="password">
+    </md-input-container>
+    <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+
     <div layout="row" layout-align="end center">
-        <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userCreateClick()">Create</md-button>
+        <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userClick()">Create</md-button>
         <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.userCancelClick()">Cancel</md-button>
     </div>
 

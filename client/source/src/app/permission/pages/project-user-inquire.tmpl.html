@@ -2,45 +2,19 @@
     <h2 class="md-display-1">查询结果</h2>
 
     <p>All of Users you are able to manuplate.</p>
-    <!-- <md-subheader class="md-no-sticky">
-        <md-button class="md-raised md-accent" aria-label="Create a project" ng-click="vm.userClick()">
-            <md-icon md-font-icon="zmdi zmdi-plus-circle" ></md-icon>
-            新建
-        </md-button>
-        <md-button class="md-raised md-accent" aria-label="Create a project" ng-click="vm.userClick()">
-            <md-icon md-font-icon="zmdi zmdi-plus-circle" ></md-icon>
-            修改
-        </md-button>
-        <md-button class="md-raised md-accent" aria-label="Create a project" ng-click="vm.userClick()">
-            <md-icon md-font-icon="zmdi zmdi-plus-circle" ></md-icon>
-            删除
-        </md-button>
-        <md-button class="md-raised md-accent" aria-label="Create a project" ng-click="vm.userClick()">
-            <md-icon md-font-icon="zmdi zmdi-plus-circle" ></md-icon>
-            修改角色
-        </md-button>
-        <md-button class="md-raised md-accent" aria-label="Create a project" ng-click="vm.userClick()">
-            <md-icon md-font-icon="zmdi zmdi-plus-circle" ></md-icon>
-            查看角色
-        </md-button>
-    </md-subheader> -->
-    <md-button class="md-fab md-primary" aria-label="add" ng-click="vm.CreateUserClick()">
-        <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
-        <md-tooltip>Create User</md-tooltip>
+    
+    <md-button class="md-fab md-primary" aria-label="add" ng-click="vm.userCreateClick()">
+      <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
+      <md-tooltip>Create User</md-tooltip>
     </md-button>
-    <md-button class="md-fab md-primary" aria-label="modify" ng-click="vm.deleteUserClick()">
+    <md-button class="md-fab md-primary" aria-label="modify" ng-click="vm.userModifyClick()">
         <md-icon md-font-icon="zmdi zmdi-edit"></md-icon>
         <md-tooltip>Modify</md-tooltip>
     </md-button>
-    <md-button class="md-fab md-primary" aria-label="See">
-        <md-icon md-font-icon="zmdi zmdi-delete"></md-icon>
-        <md-tooltip>Delete</md-tooltip>
-    </md-button>
-    <md-button class="md-fab md-primary" aria-label="See">
-        <md-icon md-font-icon="zmdi zmdi-eye"></md-icon>
-        <md-tooltip>See</md-tooltip>
-    </md-button>
-
+    <!-- <md-button class="md-fab md-primary" aria-label="See">
+        <md-icon md-font-icon="zmdi zmdi-save"></md-icon>
+        <md-tooltip>Save</md-tooltip>
+    </md-button> -->
     <div layout="row" layout-xs="column" layout-margin layout-align="space-between stretch">
         <div class="md-whiteframe-1dp" flex layout="column">
             <md-toolbar>
@@ -49,25 +23,70 @@
                 </div>
             </md-toolbar>
             <md-table-container>
-                <table md-table class="md-primary md-data-table" md-row-select>
+                <table md-table class="md-primary md-data-table" md-row-select >
                     <thead md-head>
                         <tr md-row>
-                            <th md-column><span translate>人员id</span></th>
-                            <!--<th md-column><span translate>人员类型名称</span></th>-->
-                            <th md-column><span translate>邮箱</span></th>
+                            <th md-column><span translate>ID</span></th>
+                            <th md-column><span translate>姓名</span></th>
+                            <th md-column><span translate>Email</span></th>
+                            <th md-column><span translate>操作</span></th>
                         </tr>
-                    </thead>
+                 
+                        </thead>
                     <tbody md-body>
-                        <tr md-row ng-model="vm.user">
-                            <td md-cell>{{::vm.user._id}}</td>
-                            <!--<td md-cell>{{::user.name}}</td>-->
-                            <td md-cell>{{::vm.user.email}}</a>
-                            </td>
+
+                       <tr md-row ng-show="vm.showdata">
+                            <th md-column ><span translate>{{vm.user._id}}</span></th>
+                            <th md-column ><span translate>{{vm.user.username}}</span></th>
+                            <th md-column><span translate>{{vm.user.email}}</span></th>
+                            
+                            <th md-column><span translate></span>
+                                <md-button class="md-fab md-primary" aria-label="delete" ng-click="vm.userDeleteClick($event)">
+                                    <md-icon md-font-icon="zmdi zmdi-delete"></md-icon>
+                                    <md-tooltip>Delete</md-tooltip>
+                                </md-button>
+                            </th>
                         </tr>
+                        <tr md-row ng-show="vm.showinput">
+                            <th md-column>
+                                <span translate>
+                                    <md-input-container >
+                                        <input type="text" ng-model = "vm.newuser.id">
+                                    </md-input-container>
+                                </span>
+                            </th>
+                            <th md-column>
+                                <span translate>
+                                    <md-input-container >
+                                        <input type="text" ng-model = "vm.newuser.position">
+                                    </md-input-container>
+                                </span>
+                            </th>
+                            <th md-column>
+                                <span translate>
+                                    <md-input-container >
+                                        <input type="text" ng-model = "vm.newuser.email">
+                                    </md-input-container>
+                                </span>
+                            </th>
+                            
+                            <th md-column><span translate></span>
+                                <md-button class="md-fab md-primary" aria-label="save" ng-click="vm.showConfirm()">
+                                    <md-icon md-font-icon="zmdi zmdi-save"></md-icon>
+                                    <md-tooltip>Save</md-tooltip>
+                                </md-button>
+                            </th>
+                        </tr>    
+
+
                     </tbody>
                 </table>
             </md-table-container>
+
         </div>
+        <!-- <md-card>
+            <md-button class="md-primary md-raised" ng-disabled="dialogForm.$invalid" ng-click="">Create</md-button>
+        </md-card> -->
     </div>
 
 </div>
